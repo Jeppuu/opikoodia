@@ -1,6 +1,6 @@
 function changeColor() {
-  /*let header = document.getElementById('header');
-  let colors = ["red", "blue", "orange", "green"];
+  let header = document.getElementById('header');
+  /*let colors = ["red", "blue", "orange", "green"];
   let randomIndex = Math.floor(Math.random() * colors.length);
   let randomColor = colors[randomIndex];
 
