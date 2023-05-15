@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="script.js"></script>
+  <title>Geolocation</title>
+  <style>
+    #findme{
+      position: relative;
+      text-align: center;
+      background-color: aquamarine;
+      border-radius: 50px;
+      border-style: none;
+      padding: 10px;
+      width: 400px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div style="margin: auto;">
+  <button id="findme" onclick="findMe()">Show my location</button>
+  <br/>
+  <p id="status"></p>
+  <a id="maplink" target="_blank"></a>
+</div>
+</body>
+</html>
