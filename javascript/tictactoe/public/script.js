@@ -1,4 +1,4 @@
-var origBoard;
+var originalBoard;
 const huPlayer = 'O';
 const aiPlayer = 'X';
 const winCombos = [
@@ -17,7 +17,7 @@ startGame();
 
 function startGame() {
   document.querySelector(".endgame").style.display = "none";
-  origBoard = Array.from(Array(9).keys());
+  originalBoard = Array.from(Array(9).keys());
   for (var i = 0; i < cells.length; i++) {
     cells[i].innerText = '';
     cells[i].style.removeProperty('background-color');
@@ -30,6 +30,11 @@ function turnClick(square) {
 }
 
 function turn(squareId, player) {
-  origBoard[squareId] = player;
+  originalBoard[squareId] = player;
   document.getElementById(squareId).innerText = player;
 }
+
+
+
+
+

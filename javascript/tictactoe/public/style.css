@@ -1,22 +1,16 @@
-html {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 body {
-  background: linear-gradient(90deg, aquamarine, violet);
+  background: linear-gradient(90deg, aqua, violet);
 }
-
 td {
-  border: 4px solid #fff;
-  color: #fff;
+  border: 3px solid #fff;
   height: 100px;
   width: 100px;
   text-align: center;
   vertical-align: middle;
-  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
   font-size: 70px;
+  cursor: pointer;
 }
 
 table {
@@ -24,33 +18,37 @@ table {
   position: absolute;
   left: 50%;
   margin-left: -155px;
-  top: 100px;
+  top: 50px;
 }
+
 table tr:first-child td {
   border-top: 0;
 }
+
 table tr:last-child td {
   border-bottom: 0;
 }
+
 table tr td:first-child {
   border-left: 0;
 }
+
 table tr td:last-child {
   border-right: 0;
 }
 
 .endgame {
-  display: block;
-  width: 250px;
-  height: 200px;
+  display: none;
+  width: 200px;
+  top: 120px;
+  background-color: slategrey;
   position: absolute;
-  left: 2%;
-  margin-left: 2px;
-  top: 2%;
-  margin-top: 2px;
+  left: 50%;
+  margin-left: -100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
+  color: white;
   font-size: 2em;
-  background-color: teal;
-  color: #fff;
 }
