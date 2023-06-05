@@ -7,6 +7,9 @@ let router = express.Router();
 router.get('/shopping', function (req, res) {
   //user specific items
   let query = { "user": req.session.user }
+  if (req.query.type) {
+    query.type = req.query.type;
+  }
   itemModel.find(query).then(function (items) {
     return res.status(200).json(items);
   }).catch(function (err) {
@@ -61,7 +64,8 @@ router.put("/shopping/:id", function (req, res) {
   let item = {
     "type": req.body.type,
     "count": req.body.count,
-    "price": req.body.price
+    "price": req.body.price,
+    "user": req.body.user
   }
   itemModel.replaceOne({ "_id": req.params.id, "user": req.session.user }, item).then(function (stats) {
     console.log(stats);

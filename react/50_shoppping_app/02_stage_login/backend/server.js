@@ -152,6 +152,21 @@ app.post("/login", function (req, res) {
   })
 })
 
+//log out
+app.post("/logout", function (req, res) {
+  if (!req.headers.token) {
+    return res.status(404).json({ "Message": "Not found" });
+  }
+  //delete token from session
+  sessionModel.deleteOne({ "token": req.headers.token }).then(function () {
+    return res.status(200).json({ "Message": "Logged out" });
+  }).catch(function (err) {
+    console.log(err);
+    return res.status(500).json({ "Message": "Internal Server Error" });
+  })
+})
+
+//only allow api route if user is logged in
 app.use("/api", isUserLogged, shoppingRoute);
 
 app.listen(port);
