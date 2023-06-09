@@ -1,0 +1,8 @@
+      TO DO:
+
+    1. turn profile icon into a link href /profile
+    2. fix up archive, my posts and profile pages
+    3. start thinking about the rest api
+    4. think about how to create dynamic posts
+    5. log in page and user roles and identification
+    6. make footer stay at the bottom of the page, it's annoying
