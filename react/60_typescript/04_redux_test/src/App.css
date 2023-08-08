@@ -1,0 +1,72 @@
+.App {
+  text-align: left;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1em;
+  color: white;
+  padding: 1em;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+form label {
+  margin-left: 8px;
+  font-weight: 500;
+}
+form input {
+  border: none;
+  border-radius: 12px;
+  min-height: 30px;
+  padding: 4px 8px;
+}
+form input[type="submit"] {
+  background-color: cadetblue;
+  color: white;
+  font-weight: 500;
+  border-radius: 12px;
+  min-height: 40px;
+  margin-top: 8px;
+  padding: 4px 8px;
+  transition: 0.4s;
+}
+form input[type="submit"]:hover {
+  background-color: #4e8284;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table td,
+table th {
+  border: 1px solid #ececec;
+  padding: 8px;
+}
+table tr:nth-child(even) {
+  background-color: #333944;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: cadetblue;
+}
+table button {
+  background-color: cadetblue;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  margin-top: 8px;
+  padding: 4px 8px;
+  transition: 0.4s;
+  font-size: 12px;
+}
