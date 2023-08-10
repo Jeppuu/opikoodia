@@ -23,9 +23,6 @@ export default function Navbar() {
               <Link href={"/feed"}>Main Feed</Link>
             </li >
             <li className="font-normal lg:text-lg md:text-lg sm:text-base pb-3 transition duration-300 lg:hover:border-b-4 sm:hover:border-b-2 hover:border-brandGreen hover:pb-0">
-              <Link href={"/archive"}>Archive</Link>
-            </li>
-            <li className="font-normal lg:text-lg md:text-lg sm:text-base pb-3 transition duration-300 lg:hover:border-b-4 sm:hover:border-b-2 hover:border-brandGreen hover:pb-0">
               <Link href={"/my-posts"}>My Posts</Link>
             </li>
           </ul>

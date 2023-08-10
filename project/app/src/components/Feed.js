@@ -15,16 +15,6 @@ export async function fetchPosts() {
 export default async function Feed() {
   const { data: session } = useSession()
 
-  const [postList, setPostList] = useState([]);
-
-  const handleResolve = (resolvedPostId) => {
-    setPosts((prevPosts) =>
-      prevPosts.map((post) =>
-        post._id === resolvedPostId ? { ...post, resolved: true } : post
-      )
-    );
-  };
-
   const posts = await fetchPosts()
 
   return (
@@ -36,7 +26,7 @@ export default async function Feed() {
             {posts?.length > 0 && <h2 className="text-center text-2xl tracking-wide leading-loose uppercase p-4">Explore and share your thoughts</h2>}
             {posts?.length > 0
               ? posts.map((post) => (
-                <Post key={post._id} handleResolve={handleResolve} post={post} />
+                <Post key={post._id} post={post} />
               )) : <h3>Loading posts...</h3>}
           </div >
         </>

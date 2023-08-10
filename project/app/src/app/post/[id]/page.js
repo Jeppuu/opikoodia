@@ -12,11 +12,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import CommentForm from "@/components/CommentForm"
 import CommentList from "@/components/CommentList"
 
+
 //ctx or postId
 const PostDetails = (ctx) => {
   const [postDetails, setPostDetails] = useState('')
   const [isReacted, setIsReacted] = useState(false)
-  const [isResolved, setIsResolved] = useState(false)
   const [postReactions, setPostReactions] = useState(0)
   const [commentText, setCommentText] = useState('')
   const [comments, setComments] = useState([])
@@ -113,20 +113,6 @@ const PostDetails = (ctx) => {
     }
   }
 
-  const handleResolveClick = async () => {
-    const res = await fetch(`/api/post/${ctx.params.id}/resolve`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${session.user.accessToken}`,
-      },
-    })
-
-    if (res.ok) {
-      onResolve(ctx.params.id)
-      //notify parent component that the post was resolved
-    }
-  }
 
   const addComment = async (newComment, commentText) => {
     try {
@@ -191,13 +177,6 @@ const PostDetails = (ctx) => {
       <Image alt="post image" height={200} width={300} src={"/background.jpg"}
         className="pb-4 rounded" />
       <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-200 mt-auto w-full">
-        <div className="ml-3 inline.flex items-center mr-auto leading-none text-sm">
-          {postDetails?.authorId?._id.toString() === session?.user?._id.toString() && !ctx.resolved && (
-            <button className="p-2 shadow  bg-transparent rounded hover:shadow-brandGreen"
-              onClick={handleResolveClick}><FontAwesomeIcon icon={faCheck} className="mr-1"
-              />Mark as resolved</button>
-          )}
-        </div>
         <span className="mr-3 inline-flex items-center ml-auto leading-none text-md">
           {postReactions}{" "}{isReacted
             ? (<FontAwesomeIcon icon={faCircleUp} onClick={handleReaction} className="text-md ml-2 bg-transparent text-brandGreen cursor-pointer" />)
