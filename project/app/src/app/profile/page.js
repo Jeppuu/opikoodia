@@ -1,9 +1,7 @@
-import Feed from "@/components/Feed"
+'use client'
+import ProfilePage from "@/components/Profile"
 
 export default function Page() {
-  return (
-    <div className="profile">
-      <p>This is my profile!</p>
-    </div>
-  )
+  return <ProfilePage />
+
 }

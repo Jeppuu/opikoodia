@@ -151,7 +151,8 @@ const PostDetails = (ctx) => {
     <div className="bg-bgRGBA p-4 my-4 mx-auto rounded flex flex-col flex-wrap items-center justify-center md:w-2/3">
       <div className="top-bar flex flex-row my-2 items-center text-center w-full justify-between pb-2 border-b border-gray-200">
         <span className="inline-block p-2 rounded bg-brandGreen text-white text-xs font-medium ">{postDetails.category}</span>
-        <p className="text-sm text-gray-400 pr-2 ml-auto">{formattedTime}</p>
+        <p className="text-sm text-gray-400 pr-2 ml-auto">{postDetails?.authorId?.username}</p>
+        <p className="text-sm text-gray-400 px-2">{formattedTime}</p>
         {
           //if the post has been made by the current user
           postDetails?.authorId?._id.toString() === session?.user?._id.toString()
