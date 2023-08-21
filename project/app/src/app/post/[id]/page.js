@@ -23,7 +23,7 @@ const PostDetails = (ctx) => {
 
   const [formattedTime, setFormattedTime] = useState('');
 
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
 
   useEffect(() => {
@@ -147,6 +147,10 @@ const PostDetails = (ctx) => {
     }
   }
 
+  if (status === "loading") {
+    return <div>Loading...</div>
+  }
+
   return (
     <div className="bg-bgRGBA p-4 my-4 mx-auto rounded flex flex-col flex-wrap items-center justify-center md:w-2/3">
       <div className="top-bar flex flex-row my-2 items-center text-center w-full justify-between pb-2 border-b border-gray-200">
@@ -171,12 +175,10 @@ const PostDetails = (ctx) => {
             )
         }
       </div>
-      <div className="textContent flex flex-col flex-wrap w-full items-start justify-start px-4">
+      <div className="textContent flex flex-col flex-wrap w-full items-start justify-start mb-4 px-4 bg-white rounded">
         <h2 className="text-2xl font-medium my-2 tracking-wide">{postDetails.title}</h2>
-        <p className="mb-4 mt-2 text-base leading-relaxed">{postDetails.desc}</p>
+        <p className="mb-4 mt-2 py-6 text-base leading-relaxed">{postDetails.desc}</p>
       </div>
-      <Image alt="post image" height={200} width={300} src={"/background.jpg"}
-        className="pb-4 rounded" />
       <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-200 mt-auto w-full">
         <span className="mr-3 inline-flex items-center ml-auto leading-none text-md">
           {postReactions}{" "}{isReacted

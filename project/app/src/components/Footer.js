@@ -3,7 +3,7 @@
 export default function Footer() {
   return (
     <div className="footer">
-      <p>copyright Nature Forum 2023</p>
+      <p>Personal project of <a className="text-brandGreen font-bold" href="https://github.com/Jeppuu" target="_blank">Jeppu</a></p>
     </div>
 
   )

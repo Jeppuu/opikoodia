@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import { useSession } from "next-auth/react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Image from "next/image";
 
 
 const CreatePost = () => {

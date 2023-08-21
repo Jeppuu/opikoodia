@@ -2,14 +2,11 @@
 
 import Link from "next/link"
 import { signIn, signOut, useSession } from "next-auth/react"
-//import { ReactElement } from 'react'
-import { faBell } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from "@fortawesome/free-solid-svg-icons"
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Navbar() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
 
   return (
     session?.user
@@ -27,12 +24,6 @@ export default function Navbar() {
             </li>
           </ul>
           <ul className="list-none flex flex-row mr-4 gap-8">
-            <li className="text-brandGreen lg:text-4xl md:text-3xl  sm:text-3xl cursor-pointer transition duration-300 hover:text-brandGreenHover">
-              <FontAwesomeIcon icon={faBell} className="fa-bell" />
-            </li>
-            <li className="text-brandGreen lg:text-4xl md:text-3xl  sm:text-3xl cursor-pointer transition duration-300 hover:text-brandGreenHover">
-              <Link href={"/profile"}><FontAwesomeIcon icon={faUser} className="fa-user" /></Link>
-            </li>
             <li className="text-brandGreen lg:text-4xl md:text-3xl  sm:text-3xl cursor-pointer transition duration-300 hover:text-brandGreenHover">
               <FontAwesomeIcon icon={faRightFromBracket} onClick={() => { signOut() }} />
             </li>

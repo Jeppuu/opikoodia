@@ -1,5 +1,4 @@
 'use client'
-import Image from "next/image"
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
@@ -31,7 +30,6 @@ const Post = ({ post: { title, desc, reactions, category, authorId, _id, created
         },
         method: 'PUT'
       })
-      console.log(res);
       if (res.ok) {
         //toggle like if post is already liked by the user
         if (isReacted) {
@@ -56,10 +54,8 @@ const Post = ({ post: { title, desc, reactions, category, authorId, _id, created
       </div>
       <div className="textContent flex flex-col flex-wrap w-full items-start justify-start px-4">
         <h2 className="text-2xl font-medium my-2 tracking-wide">{title}</h2>
-        <p className="mb-4 mt-2 text-base leading-relaxed">{desc}</p>
+        <p className="mb-4 mt-2 py-6 text-base leading-relaxed">{desc}</p>
       </div>
-      <Image alt="post image" height={200} width={300} src={"/background.jpg"}
-        className="pb-4 rounded" />
 
       <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-200 mt-auto w-full">
         <Link href={`/post/${_id}`} className="inline-block border-b border-brandGreen text-brandGreen font-medium">
