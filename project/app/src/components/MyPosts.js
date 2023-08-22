@@ -7,12 +7,15 @@ import Toolbar from "./Toolbar";
 
 export async function fetchPosts() {
   const res = await fetch('/api/post', { cache: 'no-store' });
-  return res.json();
+  const posts = await res.json()
+  return posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); // Sort by creation time
 }
 
 export default function UserPosts() {
   const { data: session } = useSession();
   const [userPosts, setUserPosts] = useState([]);
+  const [filteredUserPosts, setFilteredUserPosts] = useState([]);
+  const [filterText, setFilterText] = useState("");
 
   useEffect(() => {
     async function fetchAndSetUserPosts() {
@@ -26,24 +29,42 @@ export default function UserPosts() {
     fetchAndSetUserPosts();
   }, [session]);
 
+  useEffect(() => {
+    if (filterText.trim() === "") {
+      setFilteredUserPosts([]);
+    } else {
+      const filtered = userPosts.filter(post =>
+        post.category.toLowerCase().includes(filterText.toLowerCase())
+      );
+      setFilteredUserPosts(filtered);
+    }
+  }, [filterText, userPosts]);
+
+  const displayedUserPosts = filterText.trim() === "" ? userPosts : filteredUserPosts;
+
   return (
     session?.user ? (
       <>
-        <Toolbar />
+        <Toolbar onFilterTextChange={setFilterText} />
         <div className="feed">
-          {userPosts?.length > 0 && <h2 className="text-center text-2xl tracking-wide leading-loose uppercase p-4">Your own posts</h2>}
-          {userPosts?.length > 0 ? (
-            userPosts.map((post) => (
+          {displayedUserPosts?.length > 0 ? (
+            displayedUserPosts.map((post) => (
               <Post key={post._id} post={post} />
             ))
           ) : (
-            <h3>No posts to display.</h3>
+            <h3 className="text-base flex justify-center items-center p-4">
+              {userPosts.length === 0
+                ? "You haven't made any posts yet."
+                : "No posts match this category"
+              }
+            </h3>
           )}
         </div>
       </>
     ) : (
       <div className="feed">
-        <p>You are not logged in</p>
+        <p className="text-base flex justify-center items-center p-4"
+        >Please log in to access the forum.</p>
       </div>
     )
   );

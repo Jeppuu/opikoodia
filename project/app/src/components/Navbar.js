@@ -13,18 +13,18 @@ export default function Navbar() {
       ? (
         <div className="relative bg-bgRGBA shadow-md w-full h-32 flex flex-row justify-between items-center">
           <Link href={"/"}>
-            <p className="mx-4 font-medium lg:text-3xl md:text-2xl sm:text-xl transition-colors delay-150 ease-in-out text-brandGreen hover:text-brandGreenHover"
+            <p className="mx-4 font-medium lg:text-3xl md:text-2xl text-xl transition-colors delay-150 ease-in-out text-brandGreen hover:text-brandGreenHover"
             >Nature Forum</p></Link>
           <ul className="list-none flex flex-row mr-4 gap-7">
-            <li className="font-normal lg:text-lg md:text-lg sm:text-base pb-3 transition duration-300 lg:hover:border-b-4 sm:hover:border-b-2 hover:border-brandGreen hover:pb-0">
+            <li className="font-normal md:text-lg text-base pb-3 transition duration-300 lg:hover:border-b-4 sm:hover:border-b-2 hover:border-brandGreen hover:pb-0">
               <Link href={"/feed"}>Main Feed</Link>
             </li >
-            <li className="font-normal lg:text-lg md:text-lg sm:text-base pb-3 transition duration-300 lg:hover:border-b-4 sm:hover:border-b-2 hover:border-brandGreen hover:pb-0">
+            <li className="font-normal md:text-lg text-base pb-3 transition duration-300 lg:hover:border-b-4 sm:hover:border-b-2 hover:border-brandGreen hover:pb-0">
               <Link href={"/my-posts"}>My Posts</Link>
             </li>
           </ul>
           <ul className="list-none flex flex-row mr-4 gap-8">
-            <li className="text-brandGreen lg:text-4xl md:text-3xl  sm:text-3xl cursor-pointer transition duration-300 hover:text-brandGreenHover">
+            <li className="text-brandGreen lg:text-4xl text-3xl cursor-pointer transition duration-300 hover:text-brandGreenHover">
               <FontAwesomeIcon icon={faRightFromBracket} onClick={() => { signOut() }} />
             </li>
           </ul>

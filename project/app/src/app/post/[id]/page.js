@@ -152,47 +152,57 @@ const PostDetails = (ctx) => {
   }
 
   return (
-    <div className="bg-bgRGBA p-4 my-4 mx-auto rounded flex flex-col flex-wrap items-center justify-center md:w-2/3">
-      <div className="top-bar flex flex-row my-2 items-center text-center w-full justify-between pb-2 border-b border-gray-200">
-        <span className="inline-block p-2 rounded bg-brandGreen text-white text-xs font-medium ">{postDetails.category}</span>
-        <p className="text-sm text-gray-400 pr-2 ml-auto">{postDetails?.authorId?.username}</p>
-        <p className="text-sm text-gray-400 px-2">{formattedTime}</p>
-        {
-          //if the post has been made by the current user
-          postDetails?.authorId?._id.toString() === session?.user?._id.toString()
-            ? (
-              <>
-                <Link href={`/post/edit/${ctx.params.id}`} className="">
-                  <FontAwesomeIcon icon={faPen} className="text-md mx-2 bg-transparent text-gray-300 hover:text-brandGreen" />
-                </Link>
-                <FontAwesomeIcon icon={faTrash} onClick={handleDelete} className="text-md ml-2 bg-transparent text-gray-300 hover:text-red" />
-              </>
-            )
-            : (
-              <>
-                <p className="font-medium p-2">{postDetails?.authorId?.username}</p>
-              </>
-            )
-        }
-      </div>
-      <div className="textContent flex flex-col flex-wrap w-full items-start justify-start mb-4 px-4 bg-white rounded">
-        <h2 className="text-2xl font-medium my-2 tracking-wide">{postDetails.title}</h2>
-        <p className="mb-4 mt-2 py-6 text-base leading-relaxed">{postDetails.desc}</p>
-      </div>
-      <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-200 mt-auto w-full">
-        <span className="mr-3 inline-flex items-center ml-auto leading-none text-md">
-          {postReactions}{" "}{isReacted
-            ? (<FontAwesomeIcon icon={faCircleUp} onClick={handleReaction} className="text-md ml-2 bg-transparent text-brandGreen cursor-pointer" />)
-            : (<FontAwesomeIcon icon={faCircleUp} onClick={handleReaction} className="text-md ml-2 bg-transparent text-gray-300 cursor-pointer" />)}
-        </span>
-      </div>
+    session?.user
+      ? (
+        <div className="bg-bgRGBA p-4 my-4 mx-auto rounded flex flex-col flex-wrap items-center justify-center md:w-2/3">
+          <div className="top-bar flex flex-row my-2 items-center text-center w-full justify-between pb-2 border-b border-gray-200">
+            <span className="inline-block p-2 rounded bg-brandGreen text-white text-xs font-medium ">{postDetails.category}</span>
+            <p className="text-sm text-gray-400 pr-2 ml-auto">{postDetails?.authorId?.username}</p>
+            <p className="text-sm text-gray-400 px-2">{formattedTime}</p>
+            {
+              //if the post has been made by the current user
+              postDetails?.authorId?._id.toString() === session?.user?._id.toString()
+                ? (
+                  <>
+                    <Link href={`/post/edit/${ctx.params.id}`} className="">
+                      <FontAwesomeIcon icon={faPen} className="text-md mx-2 bg-transparent text-gray-300 hover:text-brandGreen" />
+                    </Link>
+                    <FontAwesomeIcon icon={faTrash} onClick={handleDelete} className="text-md ml-2 bg-transparent text-gray-300 hover:text-red" />
+                  </>
+                )
+                : (
+                  <>
+                    <p className="font-medium p-2">{postDetails?.authorId?.username}</p>
+                  </>
+                )
+            }
+          </div>
+          <div className="textContent flex flex-col flex-wrap w-full items-start justify-start mb-4 px-4 bg-white rounded">
+            <h2 className="text-2xl font-medium my-2 tracking-wide">{postDetails.title}</h2>
+            <p className="mb-4 mt-2 py-6 text-base leading-relaxed">{postDetails.desc}</p>
+          </div>
+          <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-200 mt-auto w-full">
+            <span className="mr-3 inline-flex items-center ml-auto leading-none text-md">
+              {postReactions}{" "}{isReacted
+                ? (<FontAwesomeIcon icon={faCircleUp} onClick={handleReaction} className="text-md ml-2 bg-transparent text-brandGreen cursor-pointer" />)
+                : (<FontAwesomeIcon icon={faCircleUp} onClick={handleReaction} className="text-md ml-2 bg-transparent text-gray-300 cursor-pointer" />)}
+            </span>
+          </div>
 
-      <div className="w-full flex flex-col items-start justify-start text-center">
-        <CommentForm postId={ctx.params.id} authorId={session?.user?._id} addComment={addComment} />
-        <CommentList comments={comments} setComments={setComments} />
-      </div>
-      <ToastContainer hideProgressBar={true} position="top-center" />
-    </div>
+          <div className="w-full flex flex-col items-start justify-start text-center">
+            <CommentForm postId={ctx.params.id} authorId={session?.user?._id} addComment={addComment} />
+            <CommentList comments={comments} setComments={setComments} />
+          </div>
+          <ToastContainer hideProgressBar={true} position="top-center" />
+        </div>
+      )
+      :
+      (
+        <div className="feed">
+          <p className="text-base flex justify-center items-center p-4"
+          >Please log in to access the forum.</p>
+        </div>
+      )
   )
 }
 
